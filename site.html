@@ -1,0 +1,34 @@
+<!-- Start of first page I -->
+<div data-role="page" id="page">
+	<style>
+		#frame-page{
+			width: 100%;
+		}
+		.content{
+			padding: 0px !important;
+		}
+	</style>
+	<!-- Header -->
+	<div data-role="header" class='header'>
+		<div class='back-link'>
+			<a href='index.html' data-transition="slide" data-direction='reverse'>
+				<img src='img/menu/arrow-2.png'>
+			</a>
+		</div>
+		<img class='logo-img' src="img/logo.png">
+		<h1 id='logo-text'>CIDESCO</h1>
+
+	</div>
+	<!-- /header -->
+	<!-- Content    -->
+	<div data-role="content" class="content">
+		<iframe src="http://www.cidesco.com" id='frame-page'></iframe>
+	</div>
+	<!-- /content -->
+	<script>
+		$(function(){
+			$('#frame-page').height($(document).height()- 84);
+		});
+	</script>
+</div>
+<!-- /page -->

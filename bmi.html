@@ -1,0 +1,334 @@
+<!-- Start of first page I -->
+<div data-role="page" id="page">
+
+<style>
+	.iphone-picker li{
+		font-size: 20px;
+		font-family: Britannic;
+	}
+	.iphone-picker {
+		display: inline-block;
+		vertical-align: top;
+		width: 49%;
+	}
+	.iphone-picker .iphone-picker-title{
+		text-align: center;
+		font-family: Britannic Bold;
+		font-size: 13px;
+		display: inline-block;
+		vertical-align: top;
+		padding-top: 8px;
+	}
+	#calc-bmi {
+		display: inline-block;
+		color: #fff;
+		font-family: Times New Roman;
+		font-weight: bold;
+		letter-spacing: 1px;
+		vertical-align: top;
+		background-image: url('img/bmi-btn.png');
+		background-size: cover;
+		width: 138px;
+		padding-top: 15px;
+		padding-bottom: 15px;
+		text-align: center;
+		margin-top: 4px;
+	}
+	#calc-bmi:active{
+		background: #152692;
+	}
+	#bmi-result {
+		display: inline-block;
+		background: #ddd;
+		color: #000;
+		padding: 6px;
+		padding-top: 5px;
+		padding-bottom: 3px;
+		vertical-align: top;
+		font-family: Britannic;
+		font-weight: 600;
+		width: 90%;
+		margin-left: 4px;
+		text-align: center;
+		box-shadow: 1px 1px 2px gray;
+		font-size: 17px;
+	}
+	#bmi-result #bmi-result-val{
+		text-align: center;
+		font-size: 30px;
+		font-weight: bold;
+	}
+
+	.bmi-picker {
+		background: #ddd;
+		text-align: center;
+		box-sizing: border-box;
+		color: #777777;
+		font-family: Times New Roman;
+		font-size: 12px;
+		display: inline-block;
+		padding-left: 5px;
+		padding-right: 5px;
+		vertical-align: top;
+		padding-top: 8px;
+		padding-bottom: 8px;
+		box-shadow: 1px 1px 2px #A5A5A5;
+		text-decoration: underline;
+		text-shadow: 0px 0px;
+	}
+	.bmi-picker:active{
+		background-color: #FFFFFF;
+	}
+	.half-size {
+		width: 49%;
+		display: inline-block;
+		box-sizing: border-box;
+	}
+	.hr{
+		width: 70%;
+		margin: 20px auto;
+		height: 1px;
+		background: #9B9B9B;
+	}
+	.sec-title {
+		font-family: Times New Roman;
+		font-weight: bold;
+		text-shadow: none;
+		color: #000;
+	}
+	#bmiadvice1 {
+		background: url('img/orange.png') #fff5e4;
+		background-repeat: no-repeat;
+		background-size: 30% 100%;
+		background-position: right;
+		border: 1px solid #ffa200;
+	}
+	#bmiadvice1, #bmiadvice2, #bmiadvice3, #bmiadvice4 {
+		position: relative;
+		margin-top: 4px;
+	}
+	.bmiadvice_icon {
+		width: 48px;
+		position: absolute;
+		right: 6%;
+		top: 15px;
+	}
+	.bmi_male {
+		display: none;
+	}
+	.bmiadvice_text {
+		width: 65%;
+		padding: 0px 10px;
+		font-size: 12px;
+		text-shadow: 0px 0px;
+		font-family: 'Raleway', "Trebuchet MS", Arial, sans-serif;
+	}
+	.bmiadvice_text h4{
+		margin-top: 6px;
+		margin-bottom: 6px;
+		font-size:14px;
+	}
+	#bmiadvice2 {
+		background: url('img/green.png') #dcffdc;
+		background-repeat: no-repeat;
+		background-size: 30% 100%;
+		background-position: right;
+		border: 1px solid #009900;
+	}
+	#bmiadvice3 {
+		background: url('img/orange.png') #fff5e4;
+		background-repeat: no-repeat;
+		background-size: 30% 100%;
+		background-position: right;
+		border: 1px solid #ffa200;
+	}
+	#bmiadvice4 {
+		background: url('img/red.png') #ffcccc;
+		background-repeat: no-repeat;
+		background-size: 30% 100%;
+		background-position: right;
+		border: 1px solid #cc0000;
+	}
+</style>
+
+	<!-- Header -->
+	<div data-role="header" class='header'>
+		<div class='back-link'>
+			<a href='index.html' data-transition="slide" data-direction='reverse'>
+				<img src='img/menu/arrow-2.png'>
+			</a>
+		</div>
+		<img class='logo-img' src="img/logo.png">
+		<h1 id='logo-text'>CIDESCO</h1>
+	</div>
+	<!-- /header -->
+	<!-- Content    -->
+	<div data-role="content" class="content">
+		<div class='pg-title'>
+			BMI CALCULATOR			
+		</div>
+		<br>
+		<div class='iphone-picker'>
+			<div class='iphone-picker-title'>
+				HEIGHT:
+			</div>
+			<div id='height' class='bmi-picker'>
+				Set your Height
+			</div>
+		</div>
+		<div class='iphone-picker'>
+			<div class='iphone-picker-title'>
+				WEIGHT:
+			</div>
+			<div id='weight' class='bmi-picker'>
+				Set your Weight
+			</div>
+		</div>
+		<br><br>
+		<div class='half-size'>
+			<div id='calc-bmi'>
+				Calculate BMI
+			</div>
+		</div>
+		<div class='half-size'>
+			<div id="bmi-result">
+				YOUR BMI IS:
+				<div id='bmi-result-val'>---</div>
+			</div>
+		</div>
+		<div class="hr"></div>
+		<div class='sec-title'>INTERNATIONAL BMI CLASSIFICATIONS</div>
+
+		<div id="bmiadvice1">
+        	<div class="bmiadvice_icon bmi_female"><img src="img/woman1.png" width="48" height="80" alt="Underweight female image"></div>
+        	<div class="bmiadvice_icon bmi_male"><img src="img/man1.png" width="48" height="80" alt="Underweight male image"></div>
+        	<div class="bmiadvice_text">
+            <h4>BMI of less than 18.5kg/m<sup>2</sup></h4>
+            <p>A BMI of less than 18.5 indicates that you are underweight, so you may need to put on some weight. You are recommended to ask your Doctor or a dietician for advice.</p>
+            </div>
+        </div>
+        <div id="bmiadvice2">
+        
+        	<div class="bmiadvice_icon bmi_female"><img src="img/woman2.png" width="48" height="80" alt="Healthy weight female image"></div>
+        	<div class="bmiadvice_icon bmi_male"><img src="img/man2.png" width="48" height="80" alt="Healthy weight male image"></div>
+        
+        	<div class="bmiadvice_text">
+            <h4>BMI of 18.5 - 25kg/m<sup>2</sup></h4>
+            <p>A BMI of 18.5 - 25 indicates that you are at a healthy weight for your height. By maintaining a healthy weight, you lower your risk of developing serious health problems.</p>
+            </div>
+        </div>
+        <div id="bmiadvice3">
+        
+        	<div class="bmiadvice_icon bmi_female"><img src="img/woman3.png" width="48" height="80" alt="Slightly overweight female image"></div>
+        	<div class="bmiadvice_icon bmi_male"><img src="img/man3.png" width="48" height="80" alt="Slightly overweight male image"></div>
+        
+        	<div class="bmiadvice_text">
+            <h4>BMI of 25 - 30kg/m<sup>2</sup></h4>
+            <p>A BMI of 25 - 30 indicates that you are slightly overweight. You may be advised to lose some weight for health reasons. You are recommended to talk to your Doctor or a dietician for advice.</p>
+            </div>
+        </div>
+        <div id="bmiadvice4">
+        
+        	<div class="bmiadvice_icon bmi_female"><img src="img/woman4.png" width="48" height="80" alt="Overweight female image"></div>
+        	<div class="bmiadvice_icon bmi_male"><img src="img/man4.png" width="48" height="80" alt="Overweight male image"></div>
+        
+        	<div class="bmiadvice_text">
+            <h4>BMI of over 30kg/m<sup>2</sup></h4>
+            <p>A BMI of over 30 indicates that you are heavily overweight. Your health may be at risk if you do not lose weight. You are recommended to talk to your Doctor or a dietician for advice.</p>
+            </div>
+        </div>
+	</div>
+	<!-- /content -->
+	<script>
+		theHeight = 0;
+		theWeight = 0;
+
+		function openWeights(){
+			theWeights = {};
+			for(var i = 20; i<=160; i++){
+				theWeights[i] = i + " KG";
+			}
+
+			customWeight = 60;
+			console.log($('#weight').attr('data-val'));
+			if($('#weight').attr('data-val') > 0){
+				customWeight = $('#weight').attr('data-val');
+			}
+
+			SpinningWheel.addSlot(theWeights, '', customWeight);
+
+			SpinningWheel.setCancelAction(closeWeight);
+			SpinningWheel.setDoneAction(doneWeight);
+			
+			SpinningWheel.open();
+		}
+		function openHeights(){
+			theHeights = {};
+			for(var i = 60; i<=220; i++){
+				theHeights[i] = i + " CM";
+			}
+
+			customHeight = 170;
+			console.log($('#height').attr('data-val'));
+			if($('#height').attr('data-val') > 0){
+				customHeight = $('#height').attr('data-val');
+			}
+
+			SpinningWheel.addSlot(theHeights, '', customHeight);
+
+			SpinningWheel.setCancelAction(closeHeight);
+			SpinningWheel.setDoneAction(doneHeight);
+			
+			SpinningWheel.open();
+		}
+		function doneHeight() {
+			var results = SpinningWheel.getSelectedValues();
+			theHeight = results.keys.join(', ');
+			$('#height').text(theHeight + ' CM');
+			$('#height').attr('data-val', theHeight);
+			closeHeight();
+		}
+		function doneWeight() {
+			var results = SpinningWheel.getSelectedValues();
+			theWeight = results.keys.join(', ');
+			$('#weight').text(theWeight + ' KG');
+			$('#weight').attr('data-val', theWeight);
+			closeWeight();
+		}
+		function closeHeight(){
+			$('#height').removeClass('not-open');
+		}
+		function closeWeight(){
+			$('#weight').removeClass('not-open');
+		}
+		$(function(){
+			$('#height').click(function(){
+				if(!$('#height, #weight').hasClass('not-open')){
+					openHeights();
+					$(this).addClass('not-open');
+				}
+			});
+
+			$('#weight').click(function(){
+				if(!$('#height, #weight').hasClass('not-open')){
+					openWeights();
+					$(this).addClass('not-open');
+				}
+			});
+
+			$('#calc-bmi').click(function(){
+				if(theHeight > 0 && theWeight > 0){
+					theRes = theWeight / ((theHeight /100) *(theHeight /100));
+					$('#bmi-result-val').text(theRes.toFixed(1));
+				}else{
+					alert('Please select weight and height!');
+				}
+			});
+
+			$('.back-link a').click(function(){
+				removePicker();
+			});
+		});
+	</script>
+</div>
+<!-- /page -->

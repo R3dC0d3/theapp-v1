@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+	<title>&nbsp;</title>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link rel="stylesheet" href="css/jquery.mobile-1.2.0.min.css" />
+
+		<link rel="stylesheet" href="lib/ios-picker/spinningwheel.css">
+
+		<link rel="stylesheet" href="css/style.css">
+
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script src="js/jquery.mobile-1.2.0.min.js"></script>
+		<script src='lib/ios-picker/spinningwheel-min.js'></script>
+
+		<script type="text/javascript" charset="utf-8" src="js/cordova.js"></script>
+		<script src='js/script.js'></script>
+	</head>
+	<body onload="onLoad()">
+		<!-- Start of first page I -->
+		<div data-role="page" id="page">
+			<style>
+				.lang-pick {
+					display: inline-block;
+					background: rgba(0, 0, 0, 0.3);
+					height: 50px;
+					vertical-align: top;
+					float: right;
+					position: relative;
+				}
+				.lang-pick:before {
+					content: ' ';
+					position: absolute;
+					top: 0px;
+					left: 0px;
+					width: 5px;
+					height: 50px;
+					background: -moz-linear-gradient(left,  rgba(15,0,114,0.65) 0%, rgba(6,0,44,0) 61%, rgba(0,0,0,0) 100%); /* FF3.6+ */
+					background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(15,0,114,0.65)), color-stop(61%,rgba(6,0,44,0)), color-stop(100%,rgba(0,0,0,0))); /* Chrome,Safari4+ */
+					background: -webkit-linear-gradient(left,  rgba(15,0,114,0.65) 0%,rgba(6,0,44,0) 61%,rgba(0,0,0,0) 100%); /* Chrome10+,Safari5.1+ */
+					background: -o-linear-gradient(left,  rgba(15,0,114,0.65) 0%,rgba(6,0,44,0) 61%,rgba(0,0,0,0) 100%); /* Opera 11.10+ */
+					background: -ms-linear-gradient(left,  rgba(15,0,114,0.65) 0%,rgba(6,0,44,0) 61%,rgba(0,0,0,0) 100%); /* IE10+ */
+					background: linear-gradient(to right,  rgba(15,0,114,0.65) 0%,rgba(6,0,44,0) 61%,rgba(0,0,0,0) 100%); /* W3C */
+					filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a60f0072', endColorstr='#00000000',GradientType=1 ); /* IE6-9 */
+				}
+				.lang-pick img{
+					width: 60px;
+				}
+				.lang-tag {
+					display: inline-block;
+					vertical-align: top;
+					margin-top: 18px;
+					font-family: Times New Roman;
+					margin-left: 10px;
+					font-weight: 100;
+				}
+			</style>
+			<!-- Header -->
+			<div data-role="header" class='header'>
+				<img class='logo-img' src="img/logo.png">
+				<h1 id='logo-text'>CIDESCO</h1>
+				<div class='lang-pick'>
+					<span class='lang-tag'>USA</span>
+					<img src='img/lang.png'>
+				</div>
+			</div>
+			<!-- /header -->
+			<!-- Content    -->
+			<div data-role="content" class="content">
+				<h3 class='country-tag'>COUNTRY: USA</h3>
+				<div class="menu">
+					<a href="http://www.cidesco.com" onClick='return confirm("This action will take you to CIDESCO.com - Are you sure you want to do this?")' class="page-link">
+						<img class='page-link-img' src='img/menu/site.png'>
+						<span class='page-link-tag'>Website</span>
+						<img class='page-link-arrow' src='img/menu/arrow.png'>
+					</a>
+					<a href="bmi.html" data-transition="slide" class="page-link">
+						<img class='page-link-img' src='img/menu/bmi.png'>
+						<span class='page-link-tag'>BMI</span>
+						<img class='page-link-arrow' src='img/menu/arrow.png'>
+					</a>
+					<a href="sc-finder.html" data-transition="slide" class="page-link">
+						<img class='page-link-img' src='img/menu/school-finder.png'>
+						<span class='page-link-tag'>School Finder</span>
+						<img class='page-link-arrow' src='img/menu/arrow.png'>
+					</a>
+					<a href="bas-finder.html" data-transition="slide" class="page-link">
+						<img class='page-link-img' src='img/menu/bas-finder.png'>
+						<span class='page-link-tag'>Beauty &amp; Spa Finder</span>
+						<img class='page-link-arrow' src='img/menu/arrow.png'>
+					</a>
+					<a href="diagrams.html" data-transition="slide" class="page-link">
+						<img class='page-link-img' src='img/menu/diagrams.png'>
+						<span class='page-link-tag'>Diagrams</span>
+						<img class='page-link-arrow' src='img/menu/arrow.png'>
+					</a>
+					<a href="kn-base.html" data-transition="slide" class="page-link">
+						<img class='page-link-img' src='img/menu/knowledge.png'>
+						<span class='page-link-tag'>Knowledge Base</span>
+						<img class='page-link-arrow' src='img/menu/arrow.png'>
+					</a>
+					<a href="https://www.facebook.com/pages/CIDESCO-International/135657219923159"  onClick='return confirm("This action will take you to FaceBook.com - Are you sure you want to do this?")' class="page-link">
+						<img class='page-link-img' src='img/menu/fb.png'>
+						<span class='page-link-tag'>FaceBook Page</span>
+						<img class='page-link-arrow' src='img/menu/arrow.png'>
+					</a>
+				</div>
+			</div>
+			<!-- /content -->
+		</div>
+		<!-- /page -->
+	</body>
+</html>
