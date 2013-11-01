@@ -1,5 +1,43 @@
 <!-- Start of first page I -->
 <div data-role="page" id="page">
+<style>
+#sc-finder {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-right: 10px;
+	color: rgb(51, 51, 51);
+	width: 100%;
+}
+
+.ctry {
+	background: #fff;
+	margin-bottom: 10px;
+	font-size: 14px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+
+	-webkit-box-shadow: 0 3px 1px rgba(0,0,0,0.15),-2px 0 0 rgba(0,0,0,0.23),2px 0 0 rgba(0,0,0,0.19),0 1px 0 rgba(0,0,0,0.12);
+	box-shadow: 0 3px 1px rgba(0,0,0,0.15),-2px 0 0 rgba(0,0,0,0.23),2px 0 0 rgba(0,0,0,0.19),0 1px 0 rgba(0,0,0,0.12);
+}
+
+.ctry-table {
+	display: table;
+}
+
+.ctry-label {
+	font-weight: bold;
+	width: 70px;
+	display: table-cell;
+	vertical-align: top;
+	padding-left: 10px;
+}
+
+.ctry-value {
+	display: table-cell;
+	vertical-align: top;
+}
+
+</style>
 	<!-- Header -->
 	<div data-role="header" class='header'>
 		<div class='back-link'>
@@ -12,10 +50,189 @@
 
 	</div>
 	<!-- /header -->
-	<!-- Content    -->
-	<div data-role="content" class="content">
-		Knowledge Base
+
+	<div id="wrapper">
+		<!-- Content    -->
+		<div data-role="content" class="content">
+			<div class='pg-title'>
+				KNOWLEDGEBASE		
+			</div>
+			<select id="sc-finder" data-role="none">
+				<option value='chouse a country'>choose a category</option>
+			</select>
+			<br><br>
+			<div id="country">
+				
+			</div>
+		</div>
+		<!-- /content -->
 	</div>
-	<!-- /content -->
+	<script>
+		$(document).bind('mobileinit',function(){
+			$.mobile.selectmenu.prototype.options.nativeMenu = false;
+		});
+
+		$(function(){
+			$('body').addClass('ui-loading');
+
+
+			$.post('http://www.cidesco.com/app-json/sf.php?c=1', {}, function(data){
+				data = JSON.parse(data);
+				$.each(data, function(k, v){
+					$('#sc-finder').append('<option value="'+ v +'">'+ v +'</option>')
+				});
+			});
+
+			$.post('http://www.cidesco.com/app-json/sf.php', {}, function(data){
+				data = JSON.parse(data);
+				$.each(data, function(k, v){
+					$('#country').append('\
+						<div class="ctry">\
+							<div class="ctry-table">\
+								<div class="ctry-label">Region:</div>\
+								<div class="ctry-value">'+v['region']+'</div>\
+							</div>\
+							<div class="ctry-table">\
+								<div class="ctry-label">Country:</div>\
+								<div class="ctry-value">'+v['country']+'</div>\
+							</div>\
+							<div class="ctry-table">\
+								<div class="ctry-label">Name:</div>\
+								<div class="ctry-value">'+(v['company_line1'] == null ? '' : (v['company_line1'] + '<br>'))+''+(v['company_line2'] == null ? '' : (v['company_line2']))+'</div>\
+							</div>\
+							<div class="ctry-table">\
+								<div class="ctry-label">Address:</div>\
+								<div class="ctry-value">'+(v['address_line1'] == null ? '' : (v['address_line1'] + '<br>'))+''+(v['address_line2'] == null ? '' : (v['address_line2']))+''+(v['address_line3'] == null ? '' : (v['address_line3']))+'</div>\
+							</div>\
+							<div class="ctry-table">\
+								<div class="ctry-label">Zip Place:</div>\
+								<div class="ctry-value">'+v['zip']+'</div>\
+							</div>\
+							<div class="ctry-table">\
+								<div class="ctry-label">Tel:</div>\
+								<div class="ctry-value">'+v['tel']+'</div>\
+							</div>\
+							<div class="ctry-table">\
+								<div class="ctry-label">Fax:</div>\
+								<div class="ctry-value">'+v['fax']+'</div>\
+							</div>\
+							<div class="ctry-table">\
+								<div class="ctry-label">Email:</div>\
+								<div class="ctry-value">'+v['email']+'</div>\
+							</div>\
+							<div class="ctry-table">\
+								<div class="ctry-label">Web:</div>\
+								<div class="ctry-value">'+v['web']+'</div>\
+							</div>\
+						</div>\
+						');
+				});
+				$('body').removeClass('ui-loading');
+			});
+
+			$('#sc-finder').change(function(){
+				$('body').addClass('ui-loading');
+
+				$("#country").html('');
+				if($(this).val() != 'chouse a country'){
+					$.post('http://www.cidesco.com/app-json/sf.php?tag='+$(this).val(), {}, function(data){
+						data = JSON.parse(data);
+						$.each(data, function(k, v){
+							$('#country').append('\
+								<div class="ctry">\
+									<div class="ctry-table">\
+										<div class="ctry-label">Region:</div>\
+										<div class="ctry-value">'+v['region']+'</div>\
+									</div>\
+									<div class="ctry-table">\
+										<div class="ctry-label">Country:</div>\
+										<div class="ctry-value">'+v['country']+'</div>\
+									</div>\
+									<div class="ctry-table">\
+										<div class="ctry-label">Name:</div>\
+										<div class="ctry-value">'+(v['company_line1'] == null ? '' : (v['company_line1'] + '<br>'))+''+(v['company_line2'] == null ? '' : (v['company_line2']))+'</div>\
+									</div>\
+									<div class="ctry-table">\
+										<div class="ctry-label">Address:</div>\
+										<div class="ctry-value">'+(v['address_line1'] == null ? '' : (v['address_line1'] + '<br>'))+''+(v['address_line2'] == null ? '' : (v['address_line2']))+''+(v['address_line3'] == null ? '' : (v['address_line3']))+'</div>\
+									</div>\
+									<div class="ctry-table">\
+										<div class="ctry-label">Zip Place:</div>\
+										<div class="ctry-value">'+v['zip']+'</div>\
+									</div>\
+									<div class="ctry-table">\
+										<div class="ctry-label">Tel:</div>\
+										<div class="ctry-value">'+v['tel']+'</div>\
+									</div>\
+									<div class="ctry-table">\
+										<div class="ctry-label">Fax:</div>\
+										<div class="ctry-value">'+v['fax']+'</div>\
+									</div>\
+									<div class="ctry-table">\
+										<div class="ctry-label">Email:</div>\
+										<div class="ctry-value">'+v['email']+'</div>\
+									</div>\
+									<div class="ctry-table">\
+										<div class="ctry-label">Web:</div>\
+										<div class="ctry-value">'+v['web']+'</div>\
+									</div>\
+								</div>\
+								');
+						});
+						$('body').removeClass('ui-loading');
+					});
+				}else{
+
+					$.post('http://www.cidesco.com/app-json/sf.php', {}, function(data){
+						data = JSON.parse(data);
+						$.each(data, function(k, v){
+							$('#country').append('\
+								<div class="ctry">\
+									<div class="ctry-table">\
+										<div class="ctry-label">Region:</div>\
+										<div class="ctry-value">'+v['region']+'</div>\
+									</div>\
+									<div class="ctry-table">\
+										<div class="ctry-label">Country:</div>\
+										<div class="ctry-value">'+v['country']+'</div>\
+									</div>\
+									<div class="ctry-table">\
+										<div class="ctry-label">Name:</div>\
+										<div class="ctry-value">'+(v['company_line1'] == null ? '' : (v['company_line1'] + '<br>'))+''+(v['company_line2'] == null ? '' : (v['company_line2']))+'</div>\
+									</div>\
+									<div class="ctry-table">\
+										<div class="ctry-label">Address:</div>\
+										<div class="ctry-value">'+(v['address_line1'] == null ? '' : (v['address_line1'] + '<br>'))+''+(v['address_line2'] == null ? '' : (v['address_line2']))+''+(v['address_line3'] == null ? '' : (v['address_line3']))+'</div>\
+									</div>\
+									<div class="ctry-table">\
+										<div class="ctry-label">Zip Place:</div>\
+										<div class="ctry-value">'+v['zip']+'</div>\
+									</div>\
+									<div class="ctry-table">\
+										<div class="ctry-label">Tel:</div>\
+										<div class="ctry-value">'+v['tel']+'</div>\
+									</div>\
+									<div class="ctry-table">\
+										<div class="ctry-label">Fax:</div>\
+										<div class="ctry-value">'+v['fax']+'</div>\
+									</div>\
+									<div class="ctry-table">\
+										<div class="ctry-label">Email:</div>\
+										<div class="ctry-value">'+v['email']+'</div>\
+									</div>\
+									<div class="ctry-table">\
+										<div class="ctry-label">Web:</div>\
+										<div class="ctry-value">'+v['web']+'</div>\
+									</div>\
+								</div>\
+								');
+						});
+						$('body').removeClass('ui-loading');
+					});
+				}
+			});
+
+		});
+	</script>
 </div>
 <!-- /page -->

@@ -162,83 +162,85 @@
 		<h1 id='logo-text'>CIDESCO</h1>
 	</div>
 	<!-- /header -->
-	<!-- Content    -->
-	<div data-role="content" class="content">
-		<div class='pg-title'>
-			BMI CALCULATOR			
-		</div>
-		<br>
-		<div class='iphone-picker'>
-			<div class='iphone-picker-title'>
-				HEIGHT:
+	<div id="wrapper">
+		<!-- Content    -->
+		<div data-role="content" class="content">
+			<div class='pg-title'>
+				BMI CALCULATOR			
 			</div>
-			<div id='height' class='bmi-picker'>
-				Set your Height
+			<br>
+			<div class='iphone-picker'>
+				<div class='iphone-picker-title'>
+					HEIGHT:
+				</div>
+				<div id='height' class='bmi-picker'>
+					Set your Height
+				</div>
 			</div>
-		</div>
-		<div class='iphone-picker'>
-			<div class='iphone-picker-title'>
-				WEIGHT:
+			<div class='iphone-picker'>
+				<div class='iphone-picker-title'>
+					WEIGHT:
+				</div>
+				<div id='weight' class='bmi-picker'>
+					Set your Weight
+				</div>
 			</div>
-			<div id='weight' class='bmi-picker'>
-				Set your Weight
+			<br><br>
+			<div class='half-size'>
+				<div id='calc-bmi'>
+					Calculate BMI
+				</div>
 			</div>
-		</div>
-		<br><br>
-		<div class='half-size'>
-			<div id='calc-bmi'>
-				Calculate BMI
+			<div class='half-size'>
+				<div id="bmi-result">
+					YOUR BMI IS:
+					<div id='bmi-result-val'>---</div>
+				</div>
 			</div>
-		</div>
-		<div class='half-size'>
-			<div id="bmi-result">
-				YOUR BMI IS:
-				<div id='bmi-result-val'>---</div>
-			</div>
-		</div>
-		<div class="hr"></div>
-		<div class='sec-title'>INTERNATIONAL BMI CLASSIFICATIONS</div>
+			<div class="hr"></div>
+			<div class='sec-title'>INTERNATIONAL BMI CLASSIFICATIONS</div>
 
-		<div id="bmiadvice1">
-        	<div class="bmiadvice_icon bmi_female"><img src="img/woman1.png" width="48" height="80" alt="Underweight female image"></div>
-        	<div class="bmiadvice_icon bmi_male"><img src="img/man1.png" width="48" height="80" alt="Underweight male image"></div>
-        	<div class="bmiadvice_text">
-            <h4>BMI of less than 18.5kg/m<sup>2</sup></h4>
-            <p>A BMI of less than 18.5 indicates that you are underweight, so you may need to put on some weight. You are recommended to ask your Doctor or a dietician for advice.</p>
-            </div>
-        </div>
-        <div id="bmiadvice2">
-        
-        	<div class="bmiadvice_icon bmi_female"><img src="img/woman2.png" width="48" height="80" alt="Healthy weight female image"></div>
-        	<div class="bmiadvice_icon bmi_male"><img src="img/man2.png" width="48" height="80" alt="Healthy weight male image"></div>
-        
-        	<div class="bmiadvice_text">
-            <h4>BMI of 18.5 - 25kg/m<sup>2</sup></h4>
-            <p>A BMI of 18.5 - 25 indicates that you are at a healthy weight for your height. By maintaining a healthy weight, you lower your risk of developing serious health problems.</p>
-            </div>
-        </div>
-        <div id="bmiadvice3">
-        
-        	<div class="bmiadvice_icon bmi_female"><img src="img/woman3.png" width="48" height="80" alt="Slightly overweight female image"></div>
-        	<div class="bmiadvice_icon bmi_male"><img src="img/man3.png" width="48" height="80" alt="Slightly overweight male image"></div>
-        
-        	<div class="bmiadvice_text">
-            <h4>BMI of 25 - 30kg/m<sup>2</sup></h4>
-            <p>A BMI of 25 - 30 indicates that you are slightly overweight. You may be advised to lose some weight for health reasons. You are recommended to talk to your Doctor or a dietician for advice.</p>
-            </div>
-        </div>
-        <div id="bmiadvice4">
-        
-        	<div class="bmiadvice_icon bmi_female"><img src="img/woman4.png" width="48" height="80" alt="Overweight female image"></div>
-        	<div class="bmiadvice_icon bmi_male"><img src="img/man4.png" width="48" height="80" alt="Overweight male image"></div>
-        
-        	<div class="bmiadvice_text">
-            <h4>BMI of over 30kg/m<sup>2</sup></h4>
-            <p>A BMI of over 30 indicates that you are heavily overweight. Your health may be at risk if you do not lose weight. You are recommended to talk to your Doctor or a dietician for advice.</p>
-            </div>
-        </div>
+			<div id="bmiadvice1">
+	        	<div class="bmiadvice_icon bmi_female"><img src="img/woman1.png" width="48" height="80" alt="Underweight female image"></div>
+	        	<div class="bmiadvice_icon bmi_male"><img src="img/man1.png" width="48" height="80" alt="Underweight male image"></div>
+	        	<div class="bmiadvice_text">
+	            <h4>BMI of less than 18.5kg/m<sup>2</sup></h4>
+	            <p>A BMI of less than 18.5 indicates that you are underweight, so you may need to put on some weight. You are recommended to ask your Doctor or a dietician for advice.</p>
+	            </div>
+	        </div>
+	        <div id="bmiadvice2">
+	        
+	        	<div class="bmiadvice_icon bmi_female"><img src="img/woman2.png" width="48" height="80" alt="Healthy weight female image"></div>
+	        	<div class="bmiadvice_icon bmi_male"><img src="img/man2.png" width="48" height="80" alt="Healthy weight male image"></div>
+	        
+	        	<div class="bmiadvice_text">
+	            <h4>BMI of 18.5 - 25kg/m<sup>2</sup></h4>
+	            <p>A BMI of 18.5 - 25 indicates that you are at a healthy weight for your height. By maintaining a healthy weight, you lower your risk of developing serious health problems.</p>
+	            </div>
+	        </div>
+	        <div id="bmiadvice3">
+	        
+	        	<div class="bmiadvice_icon bmi_female"><img src="img/woman3.png" width="48" height="80" alt="Slightly overweight female image"></div>
+	        	<div class="bmiadvice_icon bmi_male"><img src="img/man3.png" width="48" height="80" alt="Slightly overweight male image"></div>
+	        
+	        	<div class="bmiadvice_text">
+	            <h4>BMI of 25 - 30kg/m<sup>2</sup></h4>
+	            <p>A BMI of 25 - 30 indicates that you are slightly overweight. You may be advised to lose some weight for health reasons. You are recommended to talk to your Doctor or a dietician for advice.</p>
+	            </div>
+	        </div>
+	        <div id="bmiadvice4">
+	        
+	        	<div class="bmiadvice_icon bmi_female"><img src="img/woman4.png" width="48" height="80" alt="Overweight female image"></div>
+	        	<div class="bmiadvice_icon bmi_male"><img src="img/man4.png" width="48" height="80" alt="Overweight male image"></div>
+	        
+	        	<div class="bmiadvice_text">
+	            <h4>BMI of over 30kg/m<sup>2</sup></h4>
+	            <p>A BMI of over 30 indicates that you are heavily overweight. Your health may be at risk if you do not lose weight. You are recommended to talk to your Doctor or a dietician for advice.</p>
+	            </div>
+	        </div>
+		</div>
+		<!-- /content -->
 	</div>
-	<!-- /content -->
 	<script>
 		theHeight = 0;
 		theWeight = 0;

@@ -50,21 +50,23 @@
 
 	</div>
 	<!-- /header -->
-	<!-- Content    -->
-	<div data-role="content" class="content">
-		<div class='pg-title'>
-			BEAUTY &amp; SPA CENTRES
+	<div id="wrapper">
+		<!-- Content    -->
+		<div data-role="content" class="content">
+			<div class='pg-title'>
+				BEAUTY &amp; SPA CENTRES
+			</div>
+			<select id="sc-finder" data-role="none">
+				<option value='chouse a country'>choose a country</option>
+				<option value='chouse a country'>Show all Beauty & Spa Centres</option>
+			</select>
+			<br><br>
+			<div id="country">
+				
+			</div>
 		</div>
-		<select id="sc-finder" data-role="none">
-			<option value='chouse a country'>choose a country</option>
-			<option value='chouse a country'>Show all Beauty & Spa Centres</option>
-		</select>
-		<br><br>
-		<div id="country">
-			
-		</div>
+		<!-- /content -->
 	</div>
-	<!-- /content -->
 	<script>
 		$(document).bind('mobileinit',function(){
 			$.mobile.selectmenu.prototype.options.nativeMenu = false;
@@ -116,11 +118,11 @@
 							</div>\
 							<div class="ctry-table">\
 								<div class="ctry-label">Email:</div>\
-								<div class="ctry-value">'+v['email']+'</div>\
+								<div class="ctry-value"><a href="mailto:'+v['email']+'">'+v['email']+'</a></div>\
 							</div>\
 							<div class="ctry-table">\
 								<div class="ctry-label">Web:</div>\
-								<div class="ctry-value">'+v['web']+'</div>\
+								<div class="ctry-value"><a href="http://'+v['web']+'">'+v['web']+'</a></div>\
 							</div>\
 						</div>\
 						');
@@ -168,11 +170,11 @@
 									</div>\
 									<div class="ctry-table">\
 										<div class="ctry-label">Email:</div>\
-										<div class="ctry-value">'+v['email']+'</div>\
+										<div class="ctry-value"><a href="mailto:'+v['email']+'">'+v['email']+'</a></div>\
 									</div>\
 									<div class="ctry-table">\
 										<div class="ctry-label">Web:</div>\
-										<div class="ctry-value">'+v['web']+'</div>\
+										<div class="ctry-value"><a href="http://'+v['web']+'">'+v['web']+'</a></div>\
 									</div>\
 								</div>\
 								');
@@ -216,11 +218,11 @@
 									</div>\
 									<div class="ctry-table">\
 										<div class="ctry-label">Email:</div>\
-										<div class="ctry-value">'+v['email']+'</div>\
+										<div class="ctry-value"><a href="mailto:'+v['email']+'">'+v['email']+'</a></div>\
 									</div>\
 									<div class="ctry-table">\
 										<div class="ctry-label">Web:</div>\
-										<div class="ctry-value">'+v['web']+'</div>\
+										<div class="ctry-value"><a href="http://'+v['web']+'">'+v['web']+'</a></div>\
 									</div>\
 								</div>\
 								');
