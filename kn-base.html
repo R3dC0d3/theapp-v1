@@ -9,32 +9,65 @@
 	width: 100%;
 }
 
-.ctry {
+#country {
 	background: #fff;
-	margin-bottom: 10px;
 	font-size: 14px;
-	padding-top: 10px;
-	padding-bottom: 10px;
+	padding: 10px;
 
 	-webkit-box-shadow: 0 3px 1px rgba(0,0,0,0.15),-2px 0 0 rgba(0,0,0,0.23),2px 0 0 rgba(0,0,0,0.19),0 1px 0 rgba(0,0,0,0.12);
 	box-shadow: 0 3px 1px rgba(0,0,0,0.15),-2px 0 0 rgba(0,0,0,0.23),2px 0 0 rgba(0,0,0,0.19),0 1px 0 rgba(0,0,0,0.12);
 }
 
 .ctry-table {
-	display: table;
+	margin-bottom: 10px;
+	border-bottom: 2px solid rgb(150, 150, 150);
+	padding-bottom: 10px;
+	width: 100%;
+}
+.ctry-table:last-child {
+	margin-bottom: 0px;
+	border-bottom: none;
+	padding-bottom: 0px;
 }
 
 .ctry-label {
 	font-weight: bold;
-	width: 70px;
-	display: table-cell;
 	vertical-align: top;
-	padding-left: 10px;
+
+	-ms-word-break: break-all;
+	     word-break: break-all;
+
+	     // Non standard for webkit
+	     word-break: break-word;
+
+	-webkit-hyphens: auto;
+	   -moz-hyphens: auto;
+	        hyphens: auto;
 }
 
 .ctry-value {
-	display: table-cell;
 	vertical-align: top;
+
+	-ms-word-break: break-all;
+	     word-break: break-all;
+
+	     // Non standard for webkit
+	     word-break: break-word;
+
+	-webkit-hyphens: auto;
+	   -moz-hyphens: auto;
+	        hyphens: auto;
+
+	margin-top: 3px;
+
+	color: rgb(100, 100, 100);
+	font-size: 12px;
+	text-decoration: none;
+}
+.ctry-value a{
+	color: rgb(100, 100, 100);
+	font-size: 12px;
+	text-decoration: none;
 }
 
 </style>
@@ -58,11 +91,10 @@
 				KNOWLEDGEBASE		
 			</div>
 			<select id="sc-finder" data-role="none">
-				<option value='chouse a country'>choose a category</option>
+				<option value='chouse a category'>choose a category</option>
 			</select>
 			<br><br>
 			<div id="country">
-				
 			</div>
 		</div>
 		<!-- /content -->
@@ -74,58 +106,14 @@
 
 		$(function(){
 			$('body').addClass('ui-loading');
+			$('#country').hide();
 
-
-			$.post('http://www.cidesco.com/app-json/sf.php?c=1', {}, function(data){
+			$.post('http://www.cidesco.com/app-json/knb.php?c=1', {}, function(data){
 				data = JSON.parse(data);
 				$.each(data, function(k, v){
-					$('#sc-finder').append('<option value="'+ v +'">'+ v +'</option>')
-				});
-			});
-
-			$.post('http://www.cidesco.com/app-json/sf.php', {}, function(data){
-				data = JSON.parse(data);
-				$.each(data, function(k, v){
-					$('#country').append('\
-						<div class="ctry">\
-							<div class="ctry-table">\
-								<div class="ctry-label">Region:</div>\
-								<div class="ctry-value">'+v['region']+'</div>\
-							</div>\
-							<div class="ctry-table">\
-								<div class="ctry-label">Country:</div>\
-								<div class="ctry-value">'+v['country']+'</div>\
-							</div>\
-							<div class="ctry-table">\
-								<div class="ctry-label">Name:</div>\
-								<div class="ctry-value">'+(v['company_line1'] == null ? '' : (v['company_line1'] + '<br>'))+''+(v['company_line2'] == null ? '' : (v['company_line2']))+'</div>\
-							</div>\
-							<div class="ctry-table">\
-								<div class="ctry-label">Address:</div>\
-								<div class="ctry-value">'+(v['address_line1'] == null ? '' : (v['address_line1'] + '<br>'))+''+(v['address_line2'] == null ? '' : (v['address_line2']))+''+(v['address_line3'] == null ? '' : (v['address_line3']))+'</div>\
-							</div>\
-							<div class="ctry-table">\
-								<div class="ctry-label">Zip Place:</div>\
-								<div class="ctry-value">'+v['zip']+'</div>\
-							</div>\
-							<div class="ctry-table">\
-								<div class="ctry-label">Tel:</div>\
-								<div class="ctry-value">'+v['tel']+'</div>\
-							</div>\
-							<div class="ctry-table">\
-								<div class="ctry-label">Fax:</div>\
-								<div class="ctry-value">'+v['fax']+'</div>\
-							</div>\
-							<div class="ctry-table">\
-								<div class="ctry-label">Email:</div>\
-								<div class="ctry-value">'+v['email']+'</div>\
-							</div>\
-							<div class="ctry-table">\
-								<div class="ctry-label">Web:</div>\
-								<div class="ctry-value">'+v['web']+'</div>\
-							</div>\
-						</div>\
-						');
+					if(v['name_kat'] != null){
+						$('#sc-finder').append('<option value="'+ v['id_kat'] +'">'+ v['name_kat'] +'</option>');
+					}
 				});
 				$('body').removeClass('ui-loading');
 			});
@@ -134,101 +122,37 @@
 				$('body').addClass('ui-loading');
 
 				$("#country").html('');
-				if($(this).val() != 'chouse a country'){
-					$.post('http://www.cidesco.com/app-json/sf.php?tag='+$(this).val(), {}, function(data){
+				if($(this).val() != 'chouse a category'){
+					$.post('http://www.cidesco.com/app-json/knb.php?cat='+$(this).val(), {}, function(data){
 						data = JSON.parse(data);
+						$('#country').show();
 						$.each(data, function(k, v){
-							$('#country').append('\
-								<div class="ctry">\
+							if(v['titel_inh'] != null){
+								file_ext = v['file_inh'].split('.');
+								file_ext = file_ext[file_ext.length -1];
+
+								if(file_ext != 'pdf' && file_ext != 'zip'){
+									file_ext = 'file';
+								}
+								$('#country').append('\
 									<div class="ctry-table">\
-										<div class="ctry-label">Region:</div>\
-										<div class="ctry-value">'+v['region']+'</div>\
+										<div class="ctry-label">'+ v['titel_inh'] +'</div>\
+										<div class="ctry-value">\
+											'+ v['text_inh'] +'<br>\
+											<a href="" onClick="downloadFile(\'http://www.cidesco.com/knowledgebase/plattform/include/dwd.php?inhalt='+ v['id_inh'] +'\',\''+ v['file_inh'] +'\');">\
+												<img src="img/icons/'+ file_ext +'.gif">\
+												'+ v['titel_inh'] +'\
+											</a>\
+										</div>\
 									</div>\
-									<div class="ctry-table">\
-										<div class="ctry-label">Country:</div>\
-										<div class="ctry-value">'+v['country']+'</div>\
-									</div>\
-									<div class="ctry-table">\
-										<div class="ctry-label">Name:</div>\
-										<div class="ctry-value">'+(v['company_line1'] == null ? '' : (v['company_line1'] + '<br>'))+''+(v['company_line2'] == null ? '' : (v['company_line2']))+'</div>\
-									</div>\
-									<div class="ctry-table">\
-										<div class="ctry-label">Address:</div>\
-										<div class="ctry-value">'+(v['address_line1'] == null ? '' : (v['address_line1'] + '<br>'))+''+(v['address_line2'] == null ? '' : (v['address_line2']))+''+(v['address_line3'] == null ? '' : (v['address_line3']))+'</div>\
-									</div>\
-									<div class="ctry-table">\
-										<div class="ctry-label">Zip Place:</div>\
-										<div class="ctry-value">'+v['zip']+'</div>\
-									</div>\
-									<div class="ctry-table">\
-										<div class="ctry-label">Tel:</div>\
-										<div class="ctry-value">'+v['tel']+'</div>\
-									</div>\
-									<div class="ctry-table">\
-										<div class="ctry-label">Fax:</div>\
-										<div class="ctry-value">'+v['fax']+'</div>\
-									</div>\
-									<div class="ctry-table">\
-										<div class="ctry-label">Email:</div>\
-										<div class="ctry-value">'+v['email']+'</div>\
-									</div>\
-									<div class="ctry-table">\
-										<div class="ctry-label">Web:</div>\
-										<div class="ctry-value">'+v['web']+'</div>\
-									</div>\
-								</div>\
-								');
+									');
+							}
 						});
 						$('body').removeClass('ui-loading');
 					});
 				}else{
-
-					$.post('http://www.cidesco.com/app-json/sf.php', {}, function(data){
-						data = JSON.parse(data);
-						$.each(data, function(k, v){
-							$('#country').append('\
-								<div class="ctry">\
-									<div class="ctry-table">\
-										<div class="ctry-label">Region:</div>\
-										<div class="ctry-value">'+v['region']+'</div>\
-									</div>\
-									<div class="ctry-table">\
-										<div class="ctry-label">Country:</div>\
-										<div class="ctry-value">'+v['country']+'</div>\
-									</div>\
-									<div class="ctry-table">\
-										<div class="ctry-label">Name:</div>\
-										<div class="ctry-value">'+(v['company_line1'] == null ? '' : (v['company_line1'] + '<br>'))+''+(v['company_line2'] == null ? '' : (v['company_line2']))+'</div>\
-									</div>\
-									<div class="ctry-table">\
-										<div class="ctry-label">Address:</div>\
-										<div class="ctry-value">'+(v['address_line1'] == null ? '' : (v['address_line1'] + '<br>'))+''+(v['address_line2'] == null ? '' : (v['address_line2']))+''+(v['address_line3'] == null ? '' : (v['address_line3']))+'</div>\
-									</div>\
-									<div class="ctry-table">\
-										<div class="ctry-label">Zip Place:</div>\
-										<div class="ctry-value">'+v['zip']+'</div>\
-									</div>\
-									<div class="ctry-table">\
-										<div class="ctry-label">Tel:</div>\
-										<div class="ctry-value">'+v['tel']+'</div>\
-									</div>\
-									<div class="ctry-table">\
-										<div class="ctry-label">Fax:</div>\
-										<div class="ctry-value">'+v['fax']+'</div>\
-									</div>\
-									<div class="ctry-table">\
-										<div class="ctry-label">Email:</div>\
-										<div class="ctry-value">'+v['email']+'</div>\
-									</div>\
-									<div class="ctry-table">\
-										<div class="ctry-label">Web:</div>\
-										<div class="ctry-value">'+v['web']+'</div>\
-									</div>\
-								</div>\
-								');
-						});
-						$('body').removeClass('ui-loading');
-					});
+					$('body').removeClass('ui-loading');
+					$('#country').hide();
 				}
 			});
 

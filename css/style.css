@@ -15,6 +15,8 @@
 	background: url('../img/back.png') no-repeat center center;
 	background-size: cover;
 	height: 61px;
+	position: absolute;
+	width: 100%;
 }
 
 #logo-text {
@@ -37,7 +39,10 @@
 
 .content {
 	background-color: #ccd1da !important;
+	background: url('../img/bg.png') no-repeat center center;
+	background-size: cover;
 	padding-top: 9px;
+	margin-top: 63px;
 
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -136,9 +141,10 @@
 
 .back-link img {
 	width: 24px;
-	margin-top: 19px;
-	margin-left: 13px;
-	margin-right: 9px;
+	padding-top: 19px;
+	padding-left: 13px;
+	padding-right: 9px;
+	padding-bottom: 19px;
 }
 
 .back-link:after {
